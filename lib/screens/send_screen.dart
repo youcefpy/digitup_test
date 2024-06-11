@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import './dashboard_screen.dart';
 
-class IdentityScreen extends StatefulWidget {
-  static const ROUTE_IDENTITY = '/identity';
+class SendScreen extends StatelessWidget {
+  static const ROOT_SEND = '/send';
+  const SendScreen({super.key});
 
-  @override
-  State<IdentityScreen> createState() => _IdentityScreenState();
-}
-
-class _IdentityScreenState extends State<IdentityScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.white,
-        ),
         actions: [
           IconButton(
             icon: const Icon(
@@ -34,7 +27,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
           fit: BoxFit.cover,
         ),
         title: Text(
-          'Identity',
+          'Send',
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -45,7 +38,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text('My Identity'),
+        child: Text('Send Screen In build'),
       ),
     );
   }

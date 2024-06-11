@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import './dashboard_screen.dart';
 
-class IdentityScreen extends StatefulWidget {
-  static const ROUTE_IDENTITY = '/identity';
-
-  @override
-  State<IdentityScreen> createState() => _IdentityScreenState();
-}
-
-class _IdentityScreenState extends State<IdentityScreen> {
+class ChatScreen extends StatelessWidget {
+  static const ROOT_CHAT = '/chat';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +28,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
           fit: BoxFit.cover,
         ),
         title: Text(
-          'Identity',
+          'Chat',
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -45,7 +39,7 @@ class _IdentityScreenState extends State<IdentityScreen> {
         centerTitle: true,
       ),
       body: Center(
-        child: Text('My Identity'),
+        child: Text('Chat Screen In build'),
       ),
     );
   }
