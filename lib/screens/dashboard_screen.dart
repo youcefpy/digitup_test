@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './profile_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   static const ROOT_DB = '/dashboaad';
@@ -27,24 +26,12 @@ class DashboardScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 350,
-              child: Text(
-                  'Dashborad Screen In build, but You can check your profile from the dashboard'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                    ProfileScreen.ROUTE_PROFILE_SCREEN,
-                    arguments: {});
-              },
-              child: Text('Check Profile'),
-            ),
-          ],
+        child: Container(
+          // padding: EdgeInsets.only(left: 120),
+
+          child: Text(
+            'Dashborad Screen In build Hello wolrd',
+          ),
         ),
       ),
     );

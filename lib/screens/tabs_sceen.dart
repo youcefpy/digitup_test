@@ -52,15 +52,15 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         AnimationController(vsync: this, duration: Duration(milliseconds: 200));
 
     _sendAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_sendController);
+        Tween<double>(begin: 0.0, end: -8.0).animate(_sendController);
     _transferAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_transferController);
+        Tween<double>(begin: 0.0, end: -8.0).animate(_transferController);
     _dashboardAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_dashboardController);
+        Tween<double>(begin: 0.0, end: -8.0).animate(_dashboardController);
     _chatAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_chatController);
+        Tween<double>(begin: 0.0, end: -8.0).animate(_chatController);
     _profileAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_profileController);
+        Tween<double>(begin: 0.0, end: -8.0).animate(_profileController);
   }
 
   void _selectedPage(int index) {
@@ -102,57 +102,70 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         child: currentScreen,
         bucket: bucket,
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: Theme.of(context).primaryColor,
-        height: 81.5,
-        shape: CircularNotchedRectangle(),
-        child: Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildAnimatedTabItem(0, _sendController, _sendAnimation,
-                  'assets/icons/bottom_bar/send.svg', 'Send'),
-              _buildAnimatedTabItem(1, _transferController, _transferAnimation,
-                  'assets/icons/bottom_bar/transfert.svg', 'Transfer'),
-              _buildAnimatedTabItem(
-                  2,
-                  _dashboardController,
-                  _dashboardAnimation,
-                  'assets/icons/bottom_bar/dashboard.svg',
-                  'Dashboard'),
-              _buildAnimatedTabItem(3, _chatController, _chatAnimation,
-                  'assets/icons/bottom_bar/chat.svg', 'Chat'),
-              _buildAnimatedTabItem(4, _profileController, _profileAnimation,
-                  'assets/icons/bottom_bar/profile.svg', 'Profile'),
-            ],
+      bottomNavigationBar: Row(
+        children: [
+          Expanded(
+            child: BottomAppBar(
+              color: Theme.of(context).primaryColor,
+              height: 81.5,
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    _buildAnimatedTabItem(0, _sendController, _sendAnimation,
+                        'assets/icons/bottom_bar/send.svg', 'Send'),
+                    _buildAnimatedTabItem(
+                        1,
+                        _transferController,
+                        _transferAnimation,
+                        'assets/icons/bottom_bar/transfert.svg',
+                        'Transfer'),
+                    _buildAnimatedTabItem(
+                        2,
+                        _dashboardController,
+                        _dashboardAnimation,
+                        'assets/icons/bottom_bar/dashboard.svg',
+                        'Dashboard'),
+                    _buildAnimatedTabItem(3, _chatController, _chatAnimation,
+                        'assets/icons/bottom_bar/chat.svg', 'Chat'),
+                    _buildAnimatedTabItem(
+                        4,
+                        _profileController,
+                        _profileAnimation,
+                        'assets/icons/bottom_bar/profile.svg',
+                        'Profile'),
+                  ],
+                ),
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 
   Widget _buildAnimatedTabItem(int index, AnimationController controller,
       Animation<double> animation, String iconPath, String label) {
+    final size = MediaQuery.of(context).size;
+    final double iconSize = size.shortestSide * 0.07;
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(0, animation.value),
           child: MaterialButton(
-            minWidth: 40,
+            minWidth: 0.0,
             onPressed: () => _selectedPage(index),
             child: Column(
               children: [
                 SvgPicture.asset(
                   iconPath,
-                  height: 26.78,
-                  width: 21.29,
+                  height: iconSize,
+                  width: iconSize,
                   color: _selectedPageIndex == index
                       ? Color.fromRGBO(19, 59, 183, 1)
                       : Colors.white,
                 ),
-                SizedBox(height: 2),
                 Text(
                   label,
                   style: TextStyle(

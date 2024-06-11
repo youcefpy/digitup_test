@@ -14,7 +14,10 @@ class Profile extends StatelessWidget {
           // color: Color.fromRGBO(248, 248, 248, 1),
           // margin: EdgeInsets.only(top: 59),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 18, horizontal: 25),
+            padding: EdgeInsets.symmetric(
+              vertical: 40,
+              horizontal: 25,
+            ),
             color: Color.fromRGBO(248, 248, 248, 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +45,7 @@ class Profile extends StatelessWidget {
                 ),
                 Container(
                   // margin: EdgeInsets.only(top: 40),
-                  // padding: EdgeInsets.only(top: 3),
+                  padding: EdgeInsets.only(right: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -52,23 +55,39 @@ class Profile extends StatelessWidget {
                           color: Color.fromRGBO(25, 29, 49, 1),
                           fontFamily: 'SpaceGrotesk',
                           fontWeight: FontWeight.w700,
+                          fontSize: 14,
                         ),
                       ),
-                      Text(
-                        'Member since 6th March 2024',
-                        style: TextStyle(
-                          color: Color.fromRGBO(26, 46, 53, 1),
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Member since ',
+                              style: TextStyle(
+                                color: Color.fromRGBO(26, 46, 53, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 9,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '6th March 2024',
+                              style: TextStyle(
+                                color: Color.fromRGBO(26, 46, 53, 1),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 6, bottom: 2),
+                        margin: EdgeInsets.only(top: 6, bottom: 6),
                         width: 24,
                         height: 3,
                         color: Color.fromRGBO(82, 193, 255, 1),
                       ),
                       Container(
-                        // margin: EdgeInsets.only(top: 10),
-                        width: 163,
+                        width: MediaQuery.of(context).size.width * 0.4,
                         height: 72,
                         child: Text(
                           'Insert a mini bio below. Share a snippet about yourself—interests, background, or achievements—to give others a quick glimpse of who you are.',
@@ -81,6 +100,9 @@ class Profile extends StatelessWidget {
                           softWrap: true,
                           overflow: TextOverflow.fade,
                         ),
+                      ),
+                      SizedBox(
+                        height: 4,
                       ),
                       InkWell(
                         child: SvgPicture.asset(
