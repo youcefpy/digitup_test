@@ -17,7 +17,7 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   Widget currentScreen = DashboardScreen();
   final PageStorageBucket bucket = PageStorageBucket();
 
-  double _bottomAppBarHeight = 85;
+  double _bottomAppBarHeight = 81.5;
 
   final List<Widget> _pages = [
     SendScreen(),

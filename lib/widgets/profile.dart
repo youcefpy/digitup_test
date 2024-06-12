@@ -23,12 +23,12 @@ class Profile extends StatelessWidget {
           Container(
             padding: width_screen < height_screen
                 ? EdgeInsets.symmetric(
-                    vertical: 40,
+                    vertical: 20,
                     horizontal: 15,
                   )
                 : EdgeInsets.symmetric(
                     vertical: 40,
-                    horizontal: 25,
+                    horizontal: 10,
                   ),
             color: Color.fromRGBO(248, 248, 248, 1),
             child: Row(
@@ -58,8 +58,12 @@ class Profile extends StatelessWidget {
                 Container(
                   // margin: EdgeInsets.only(top: 40),
                   padding: height_screen > width_screen
-                      ? EdgeInsets.only(right: 10)
+                      ? EdgeInsets.symmetric(horizontal: 6)
                       : EdgeInsets.only(right: 40),
+
+                  margin: EdgeInsets.only(
+                    top: 25,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -102,29 +106,34 @@ class Profile extends StatelessWidget {
                       ),
                       Container(
                         width: width_screen < height_screen
-                            ? MediaQuery.of(context).size.width * 0.44
+                            ? MediaQuery.of(context).size.width * 0.45
                             : MediaQuery.of(context).size.width * 0.6,
-                        height: 72,
-                        child: Text(
-                          'Insert a mini bio below. Share a snippet about yourself—interests, background, or achievements—to give others a quick glimpse of who you are.',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontFamily: 'SpaceGrotesk',
-                            fontWeight: FontWeight.w400,
-                            color: Color.fromRGBO(0, 0, 0, 1),
-                          ),
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
+                        height: 100,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Insert a mini bio below. Share a snippet about yourself—interests, background, or achievements—to give others a quick glimpse of who you are.',
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontFamily: 'SpaceGrotesk',
+                                fontWeight: FontWeight.w400,
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                              ),
+                              softWrap: true,
+                              overflow: TextOverflow.fade,
+                            ),
+                            SizedBox(
+                              height: 2,
+                            ),
+                            InkWell(
+                              child: SvgPicture.asset(
+                                'assets/icons/first_widget/edit_icon.svg',
+                              ),
+                              onTap: null,
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        height: width_screen < height_screen ? 4 : 0,
-                      ),
-                      InkWell(
-                        child: SvgPicture.asset(
-                          'assets/icons/first_widget/edit_icon.svg',
-                        ),
-                        onTap: null,
                       ),
                     ],
                   ),
