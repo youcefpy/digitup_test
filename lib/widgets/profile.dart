@@ -7,17 +7,29 @@ import '../screens/personal_information_screen.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double width_screen = MediaQuery.of(context).size.width;
+    double height_screen = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: width_screen > height_screen
+            ? CrossAxisAlignment.start
+            : CrossAxisAlignment.center,
+        mainAxisAlignment: width_screen > height_screen
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
         children: [
           // color: Color.fromRGBO(248, 248, 248, 1),
           // margin: EdgeInsets.only(top: 59),
           Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 40,
-              horizontal: 15,
-            ),
+            padding: width_screen < height_screen
+                ? EdgeInsets.symmetric(
+                    vertical: 40,
+                    horizontal: 15,
+                  )
+                : EdgeInsets.symmetric(
+                    vertical: 40,
+                    horizontal: 25,
+                  ),
             color: Color.fromRGBO(248, 248, 248, 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +57,9 @@ class Profile extends StatelessWidget {
                 ),
                 Container(
                   // margin: EdgeInsets.only(top: 40),
-                  padding: EdgeInsets.only(right: 10),
+                  padding: height_screen > width_screen
+                      ? EdgeInsets.only(right: 10)
+                      : EdgeInsets.only(right: 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -130,6 +144,9 @@ class Profile extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: width_screen > height_screen
+                  ? MainAxisAlignment.center
+                  : MainAxisAlignment.start,
               children: [
                 Text(
                   "About Me",

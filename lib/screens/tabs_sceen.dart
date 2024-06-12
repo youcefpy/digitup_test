@@ -97,19 +97,21 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double width_screen = MediaQuery.of(context).size.width;
+    double height_screen = MediaQuery.of(context).size.height;
     return Scaffold(
       body: PageStorage(
         child: currentScreen,
         bucket: bucket,
       ),
       bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: BottomAppBar(
               color: Theme.of(context).primaryColor,
               height: 85,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Flexible(
                     child: _buildAnimatedTabItem(
@@ -163,7 +165,7 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   Widget _buildAnimatedTabItem(int index, AnimationController controller,
       Animation<double> animation, String iconPath, String label) {
     final size = MediaQuery.of(context).size;
-    final double iconSize = size.shortestSide * 0.08;
+    final double iconSize = size.shortestSide * 0.07;
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
@@ -174,30 +176,36 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
             child: Column(
               // mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset(
-                  iconPath,
-                  height: iconSize,
-                  width: iconSize,
-                  color: _selectedPageIndex == index
-                      ? Color.fromRGBO(19, 59, 183, 1)
-                      : Colors.white,
+                Container(
+                  width: double.infinity,
+                  child: SvgPicture.asset(
+                    iconPath,
+                    height: iconSize,
+                    width: iconSize,
+                    color: _selectedPageIndex == index
+                        ? Color.fromRGBO(19, 59, 183, 1)
+                        : Colors.white,
+                  ),
                 ),
                 SizedBox(
                   height: 4,
                 ),
                 Container(
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    style: TextStyle(
-                      color: _selectedPageIndex == index
-                          ? Color.fromRGBO(19, 59, 183, 1)
-                          : Colors.white,
-                      fontSize: 10,
-                      fontWeight: _selectedPageIndex == index
-                          ? FontWeight.w700
-                          : FontWeight.w400,
-                      fontFamily: 'SpaceGrotesk',
+                  width: double.infinity,
+                  child: Center(
+                    child: Text(
+                      label,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: _selectedPageIndex == index
+                            ? Color.fromRGBO(19, 59, 183, 1)
+                            : Colors.white,
+                        fontSize: 10,
+                        fontWeight: _selectedPageIndex == index
+                            ? FontWeight.w700
+                            : FontWeight.w400,
+                        fontFamily: 'SpaceGrotesk',
+                      ),
                     ),
                   ),
                 ),

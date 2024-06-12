@@ -7,6 +7,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width_screen = MediaQuery.of(context).size.width;
+    double height_screen = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -31,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
         flexibleSpace: Image(
-          height: 113,
+          height: height_screen > width_screen ? 113 : 200,
           image: AssetImage('assets/images/background_image_appbar.png'),
           fit: BoxFit.cover,
         ),
