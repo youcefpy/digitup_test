@@ -16,7 +16,7 @@ class Profile extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(
               vertical: 40,
-              horizontal: 25,
+              horizontal: 15,
             ),
             color: Color.fromRGBO(248, 248, 248, 1),
             child: Row(
@@ -45,7 +45,7 @@ class Profile extends StatelessWidget {
                 ),
                 Container(
                   // margin: EdgeInsets.only(top: 40),
-                  padding: EdgeInsets.only(right: 30),
+                  padding: EdgeInsets.only(right: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -87,7 +87,7 @@ class Profile extends StatelessWidget {
                         color: Color.fromRGBO(82, 193, 255, 1),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
+                        width: MediaQuery.of(context).size.width * 0.44,
                         height: 72,
                         child: Text(
                           'Insert a mini bio below. Share a snippet about yourself—interests, background, or achievements—to give others a quick glimpse of who you are.',

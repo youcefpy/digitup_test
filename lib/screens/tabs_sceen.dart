@@ -52,15 +52,15 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         AnimationController(vsync: this, duration: Duration(milliseconds: 200));
 
     _sendAnimation =
-        Tween<double>(begin: 0.0, end: -8.0).animate(_sendController);
+        Tween<double>(begin: 0.0, end: -10.0).animate(_sendController);
     _transferAnimation =
-        Tween<double>(begin: 0.0, end: -8.0).animate(_transferController);
+        Tween<double>(begin: 0.0, end: -10.0).animate(_transferController);
     _dashboardAnimation =
-        Tween<double>(begin: 0.0, end: -8.0).animate(_dashboardController);
+        Tween<double>(begin: 0.0, end: -10.0).animate(_dashboardController);
     _chatAnimation =
-        Tween<double>(begin: 0.0, end: -8.0).animate(_chatController);
+        Tween<double>(begin: 0.0, end: -10.0).animate(_chatController);
     _profileAnimation =
-        Tween<double>(begin: 0.0, end: -8.0).animate(_profileController);
+        Tween<double>(begin: 0.0, end: -10.0).animate(_profileController);
   }
 
   void _selectedPage(int index) {
@@ -103,39 +103,55 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         bucket: bucket,
       ),
       bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             child: BottomAppBar(
               color: Theme.of(context).primaryColor,
-              height: 81.5,
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    _buildAnimatedTabItem(0, _sendController, _sendAnimation,
-                        'assets/icons/bottom_bar/send.svg', 'Send'),
-                    _buildAnimatedTabItem(
+              height: 85,
+              child: Row(
+                children: [
+                  Flexible(
+                    child: _buildAnimatedTabItem(
+                        0,
+                        _sendController,
+                        _sendAnimation,
+                        'assets/icons/bottom_bar/send.svg',
+                        'Send'),
+                  ),
+                  Flexible(
+                    child: _buildAnimatedTabItem(
                         1,
                         _transferController,
                         _transferAnimation,
                         'assets/icons/bottom_bar/transfert.svg',
                         'Transfer'),
-                    _buildAnimatedTabItem(
+                  ),
+                  Flexible(
+                    child: _buildAnimatedTabItem(
                         2,
                         _dashboardController,
                         _dashboardAnimation,
                         'assets/icons/bottom_bar/dashboard.svg',
                         'Dashboard'),
-                    _buildAnimatedTabItem(3, _chatController, _chatAnimation,
-                        'assets/icons/bottom_bar/chat.svg', 'Chat'),
-                    _buildAnimatedTabItem(
+                  ),
+                  Flexible(
+                    child: _buildAnimatedTabItem(
+                        3,
+                        _chatController,
+                        _chatAnimation,
+                        'assets/icons/bottom_bar/chat.svg',
+                        'Chat'),
+                  ),
+                  Flexible(
+                    child: _buildAnimatedTabItem(
                         4,
                         _profileController,
                         _profileAnimation,
                         'assets/icons/bottom_bar/profile.svg',
-                        'Profile'),
-                  ],
-                ),
+                        'profile'),
+                  ),
+                ],
               ),
             ),
           ),
@@ -147,16 +163,16 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   Widget _buildAnimatedTabItem(int index, AnimationController controller,
       Animation<double> animation, String iconPath, String label) {
     final size = MediaQuery.of(context).size;
-    final double iconSize = size.shortestSide * 0.07;
+    final double iconSize = size.shortestSide * 0.08;
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(0, animation.value),
           child: MaterialButton(
-            minWidth: 0.0,
             onPressed: () => _selectedPage(index),
             child: Column(
+              // mainAxisSize: MainAxisSize.min,
               children: [
                 SvgPicture.asset(
                   iconPath,
@@ -166,17 +182,23 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
                       ? Color.fromRGBO(19, 59, 183, 1)
                       : Colors.white,
                 ),
-                Text(
-                  label,
-                  style: TextStyle(
-                    color: _selectedPageIndex == index
-                        ? Color.fromRGBO(19, 59, 183, 1)
-                        : Colors.white,
-                    fontSize: 10,
-                    fontWeight: _selectedPageIndex == index
-                        ? FontWeight.w700
-                        : FontWeight.w400,
-                    fontFamily: 'SpaceGrotesk',
+                SizedBox(
+                  height: 4,
+                ),
+                Container(
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: _selectedPageIndex == index
+                          ? Color.fromRGBO(19, 59, 183, 1)
+                          : Colors.white,
+                      fontSize: 10,
+                      fontWeight: _selectedPageIndex == index
+                          ? FontWeight.w700
+                          : FontWeight.w400,
+                      fontFamily: 'SpaceGrotesk',
+                    ),
                   ),
                 ),
               ],
