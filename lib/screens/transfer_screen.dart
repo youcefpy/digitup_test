@@ -22,6 +22,7 @@ class TransferScreen extends StatelessWidget {
           ),
         ],
         flexibleSpace: Image(
+          // color: Colors.transparent,
           height: 113,
           image: AssetImage('assets/images/background_image_appbar.png'),
           fit: BoxFit.cover,

@@ -101,7 +101,9 @@ class Profile extends StatelessWidget {
                         color: Color.fromRGBO(82, 193, 255, 1),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.44,
+                        width: width_screen < height_screen
+                            ? MediaQuery.of(context).size.width * 0.44
+                            : MediaQuery.of(context).size.width * 0.6,
                         height: 72,
                         child: Text(
                           'Insert a mini bio below. Share a snippet about yourself—interests, background, or achievements—to give others a quick glimpse of who you are.',
@@ -116,7 +118,7 @@ class Profile extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 4,
+                        height: width_screen < height_screen ? 4 : 0,
                       ),
                       InkWell(
                         child: SvgPicture.asset(

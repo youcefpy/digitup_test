@@ -17,6 +17,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   Widget currentScreen = DashboardScreen();
   final PageStorageBucket bucket = PageStorageBucket();
 
+  double _bottomAppBarHeight = 85;
+
   final List<Widget> _pages = [
     SendScreen(),
     TransferScreen(),
@@ -63,11 +65,32 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         Tween<double>(begin: 0.0, end: -10.0).animate(_profileController);
   }
 
+  // list of global keys to get the positions of MaterialButton
+  final List<GlobalKey> _buttonKeys = List.generate(5, (index) => GlobalKey());
+
   void _selectedPage(int index) {
     setState(() {
       _selectedPageIndex = index;
       currentScreen = _pages[index];
       _animateButton(index);
+
+      // raise the height when select the item
+      switch (index) {
+        case 0:
+          _bottomAppBarHeight = 81.5;
+          break;
+        case 1:
+          _bottomAppBarHeight = 81.5;
+        case 2:
+          _bottomAppBarHeight = 81.5;
+          break;
+        case 3:
+          _bottomAppBarHeight = 81.5;
+          break;
+        case 4:
+          _bottomAppBarHeight = 95;
+          break;
+      }
     });
   }
 
@@ -99,17 +122,21 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     // double width_screen = MediaQuery.of(context).size.width;
     // double height_screen = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: PageStorage(
         child: currentScreen,
         bucket: bucket,
       ),
-      bottomNavigationBar: Row(
-        children: [
-          Expanded(
-            child: BottomAppBar(
+      bottomNavigationBar: AnimatedContainer(
+        duration: Duration(milliseconds: 250),
+        height: _bottomAppBarHeight,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            BottomAppBar(
               color: Theme.of(context).primaryColor,
-              height: 85,
+              height: _bottomAppBarHeight,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -156,8 +183,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -177,6 +204,10 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
               // mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
+                  key: _buttonKeys[index],
+                  margin: EdgeInsets.only(
+                    top: 10,
+                  ),
                   width: double.infinity,
                   child: SvgPicture.asset(
                     iconPath,

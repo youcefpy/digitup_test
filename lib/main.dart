@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         primaryColor: Color.fromRGBO(82, 193, 255, 1),
-        canvasColor: Color.fromRGBO(255, 255, 229, 1),
+
+        // canvasColor: Colors.white,
       ),
       // home: HomePage(),
       builder: (context, child) => ResponsiveBreakpoints.builder(

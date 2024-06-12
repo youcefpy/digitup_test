@@ -9,6 +9,7 @@ class SendScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(
@@ -22,6 +23,7 @@ class SendScreen extends StatelessWidget {
           ),
         ],
         flexibleSpace: Image(
+          // color: Colors.transparent,
           height: 113,
           image: AssetImage('assets/images/background_image_appbar.png'),
           fit: BoxFit.cover,
