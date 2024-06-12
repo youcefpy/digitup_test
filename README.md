@@ -1,16 +1,29 @@
 # test_digitup
 
-A new Flutter project.
 
-## Getting Started
+## Flutter Version
+Flutter 3.22.2 • channel stable • https://github.com/flutter/flutter.git
 
-This project is a starting point for a Flutter application.
+## Run Project 
+```
+flutter run lib/main.dart
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Packages Used 
+  flutter_svg: ^2.0.10+1
+  dotted_border: ^2.1.0
+  provider: ^5.0.0
+  responsive_framework: ^1.4.0
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Android Studio versoin 
+Runtime version: 17.0.10+0--11572160 amd64
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+# SDK Platform 
+
+Android 14.0
+
+## Android SDK Tools 
+
+Android Emulator version : 34.2.15
+Android SDK Platform-Tools 35.0.1

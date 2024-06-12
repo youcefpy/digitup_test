@@ -97,8 +97,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double width_screen = MediaQuery.of(context).size.width;
-    double height_screen = MediaQuery.of(context).size.height;
+    // double width_screen = MediaQuery.of(context).size.width;
+    // double height_screen = MediaQuery.of(context).size.height;
     return Scaffold(
       body: PageStorage(
         child: currentScreen,
