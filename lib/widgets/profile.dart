@@ -93,8 +93,8 @@ class Profile extends StatelessWidget {
                                 color: Color.fromRGBO(26, 46, 53, 1),
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                              ),
-                            ),
+                              ), //TextStyle
+                            ), //Text Span
                           ],
                         ),
                       ),

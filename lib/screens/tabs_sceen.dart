@@ -6,6 +6,7 @@ import '/screens/dashboard_screen.dart';
 import '/screens/profile_screen.dart';
 import '/screens/send_screen.dart';
 import '/screens/transfer_screen.dart';
+import '../navBar costomize/navbar_painter.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -39,6 +40,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
   late Animation<double> _chatAnimation;
   late Animation<double> _profileAnimation;
 
+  double height_item_gap = -10;
+
   @override
   void initState() {
     super.initState();
@@ -61,8 +64,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         Tween<double>(begin: 0.0, end: -10.0).animate(_dashboardController);
     _chatAnimation =
         Tween<double>(begin: 0.0, end: -10.0).animate(_chatController);
-    _profileAnimation =
-        Tween<double>(begin: 0.0, end: -10.0).animate(_profileController);
+    _profileAnimation = Tween<double>(begin: 0.0, end: height_item_gap)
+        .animate(_profileController);
   }
 
   // list of global keys to get the positions of MaterialButton
@@ -73,24 +76,6 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
       _selectedPageIndex = index;
       currentScreen = _pages[index];
       _animateButton(index);
-
-      // raise the height when select the item
-      switch (index) {
-        case 0:
-          _bottomAppBarHeight = 81.5;
-          break;
-        case 1:
-          _bottomAppBarHeight = 81.5;
-        case 2:
-          _bottomAppBarHeight = 81.5;
-          break;
-        case 3:
-          _bottomAppBarHeight = 81.5;
-          break;
-        case 4:
-          _bottomAppBarHeight = 95;
-          break;
-      }
     });
   }
 
@@ -123,6 +108,8 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
     // double width_screen = MediaQuery.of(context).size.width;
     // double height_screen = MediaQuery.of(context).size.height;
 
+    final orientation = MediaQuery.of(context).orientation;
+
     return Scaffold(
       body: PageStorage(
         child: currentScreen,
@@ -134,6 +121,11 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
+            CustomPaint(
+              size:
+                  Size(MediaQuery.of(context).size.width, _bottomAppBarHeight),
+              painter: NavBarPainter(_selectedPageIndex, orientation),
+            ),
             BottomAppBar(
               color: Theme.of(context).primaryColor,
               height: _bottomAppBarHeight,
@@ -191,7 +183,9 @@ class _TabsScreenState extends State<TabsScreen> with TickerProviderStateMixin {
 
   Widget _buildAnimatedTabItem(int index, AnimationController controller,
       Animation<double> animation, String iconPath, String label) {
+    // size of the width and height of the page
     final size = MediaQuery.of(context).size;
+
     final double iconSize = size.shortestSide * 0.07;
     return AnimatedBuilder(
       animation: controller,
